@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC L1 Analyst Infographic - Share Instructions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0e17 0%, #1a1f29 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            background: rgba(30, 35, 48, 0.8);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(30, 35, 48, 0.8);
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+        
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            background: rgba(20, 25, 38, 0.8);
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: rgba(0, 243, 255, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            background: rgba(30, 35, 48, 0.8);
+            border-radius: 0 0 10px 10px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            min-height: 500px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Infographic Styles */
+        .infographic-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .cyber-border {
+            height: 3px;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            width: 80%;
+            margin: 20px auto;
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(209, 0, 209, 0.7);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: rgba(30, 35, 48, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover::before {
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            border-color: rgba(0, 243, 255, 0.5);
+        }
+        
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.1);
+            position: relative;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            color: #00f3ff;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: #a0a0b0;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 1.3rem;
+            color: #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+            position: relative;
+        }
+        
+        /* Animation classes */
+        .flash {
+            animation: flashing 2s infinite;
+        }
+        
+        .pulse {
+            animation: pulsing 3s infinite;
+        }
+        
+        .bounce {
+            animation: bouncing 4s infinite;
+        }
+        
+        .spin {
+            animation: spinning 8s infinite linear;
+        }
+        
+        .alert-flash {
+            animation: alertFlashing 1.5s infinite;
+            color: #ff0066;
+        }
+        
+        @keyframes flashing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        @keyframes pulsing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes bouncing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes spinning {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes alertFlashing {
+            0%, 100% { 
+                opacity: 1;
+                text-shadow: 0 0 10px #ff0066;
+            }
+            50% { 
+                opacity: 0.5;
+                text-shadow: 0 0 20px #ff0066;
+            }
+        }
+        
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: 
+                linear-gradient(to right, rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+        
+        .scan-line {
+            position: fixed;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(to right, 
+                transparent, 
+                rgba(0, 243, 255, 0.7), 
+                transparent);
+            animation: scan 3s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100vh; }
+        }
+        
+        /* Instructions Styles */
+        .instructions {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background: rgba(30, 35, 48, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00f3ff;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #00f3ff;
+            color: #0a0e17;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .step h3 {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #00f3ff;
+        }
+        
+        .code-block {
+            background: #1a1f29;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .export-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .tab-container {
+                flex-direction: column;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    <div class="scan-line"></div>
+    
+    <div class="container">
+        <header>
+            <h1>SOC L1 Analyst Interactive Infographic</h1>
+            <p>Showcase your cybersecurity skills with this interactive infographic</p>
+        </header>
+        
+        <div class="tab-container">
+            <div class="tab active" onclick="switchTab(0)">Infographic</div>
+            <div class="tab" onclick="switchTab(1)">How to Share</div>
+            <div class="tab" onclick="switchTab(2)">LinkedIn Post Tips</div>
+        </div>
+        
+        <div class="tab-content active">
+            <div class="infographic-container">
+                <div class="header">
+                    <h2>DEEP DIVE: SOC L1 ANALYST</h2>
+                    <div class="cyber-border"></div>
+                    <p>SOC Analysts are the first line of defense against cyber threats, monitoring and analyzing security events to protect organizational assets.</p>
+                </div>
+                
+                <div class="grid">
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-project-diagram icon flash"></i>
+                        </div>
+                        <h3>SECURITY EVENT CORRELATION</h3>
+                        <p>Identifying patterns across multiple security events to detect potential threats and attacks.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-file-alt icon pulse"></i>
+                        </div>
+                        <h3>LOG ANALYSIS</h3>
+                        <p>Examining system and network logs to identify anomalies and potential security incidents.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-search icon bounce"></i>
+                        </div>
+                        <h3>THREAT HUNTING (BASIC)</h3>
+                        <p>Proactively searching for indicators of compromise and potential threats in the environment.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-phone-alt icon alert-flash"></i>
+                        </div>
+                        <h3>ESCALATION & COLLABORATION</h3>
+                        <p>Working with other teams to resolve security incidents and escalate when necessary.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-microscope icon pulse"></i>
+                        </div>
+                        <h3>INITIAL FORENSIC TRIAGE</h3>
+                        <p>Performing initial investigation and evidence gathering for potential security incidents.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-exclamation-triangle icon alert-flash"></i>
+                        </div>
+                        <h3>INCIDENT PRIORITY</h3>
+                        <p>Assessing and prioritizing security incidents based on severity and potential impact.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-tasks icon spin"></i>
+                        </div>
+                        <h3>PLAYBOOK EXECUTION</h3>
+                        <p>Following established procedures and playbooks for incident response and mitigation.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon-container">
+                            <i class="fas fa-graduation-cap icon bounce"></i>
+                        </div>
+                        <h3>CONTINUOUS LEARNING</h3>
+                        <p>Staying updated with the latest threats, vulnerabilities, and security technologies.</p>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    SOC ANALYSTS ARE THE FIRST LINE OF DEFENSE
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content">
+            <div class="instructions">
+                <h2>How to Share Your Infographic on LinkedIn</h2>
+                
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Save the HTML File</h3>
+                    <p>Click the button below to download the complete HTML file for your infographic.</p>
+                    <button class="btn" onclick="downloadCode()">Download HTML File</button>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Choose a Hosting Platform</h3>
+                    <p>Select one of these free hosting options to make your infographic live:</p>
+                    <ul>
+                        <li><strong>GitHub Pages:</strong> Create a repository, upload the HTML file, and enable GitHub Pages in settings</li>
+                        <li><strong>Netlify:</strong> Drag and drop the HTML file at <a href="https://app.netlify.com/drop" target="_blank">app.netlify.com/drop</a></li>
+                        <li><strong>Vercel:</strong> Drag and drop the HTML file at <a href="https://vercel.com/drop" target="_blank">vercel.com/drop</a></li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Create Your LinkedIn Post</h3>
+                    <p>Share your live URL on LinkedIn with a description of your project. Use relevant hashtags to increase visibility.</p>
+                    <div class="code-block">
+                        #CyberSecurity #SOC #InfoSec #WebDevelopment #FrontEnd #CyberSecurityAnalyst #Coding #JavaScript #HTML #CSS
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content">
+            <div class="instructions">
+                <h2>Crafting an Effective LinkedIn Post</h2>
+                
+                <div class="step">
+                    <h3>Post Headline</h3>
+                    <p>Grab attention with a compelling headline:</p>
+                    <div class="code-block">
+                        Just created an interactive SOC L1 Analyst infographic with animated cyber security elements! 🚀
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Post Content</h3>
+                    <p>Explain what you've created and why it matters:</p>
+                    <div class="code-block">
+                        As part of my cybersecurity learning journey, I built this interactive infographic highlighting the key responsibilities of SOC L1 Analysts. The design features animated icons, flashing alerts, and a cyberpunk aesthetic to represent the dynamic nature of security operations.
+                        
+                        Check out the live version here: [Your Link]
+                        
+                        #CyberSecurity #SOC #InfoSec #WebDevelopment
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3>Engage Your Audience</h3>
+                    <p>Encourage interaction by asking questions:</p>
+                    <div class="code-block">
+                        What do you think are the most important skills for SOC analysts? 
+                        Have you worked with any of these security tools or processes?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach((tab, index) => {
+                if (index === tabIndex) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            tabContents.forEach((content, index) => {
+                if (index === tabIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+        
+        // Download code functionality
+        function downloadCode() {
+            const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC L1 Analyst - Enhanced Infographic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0e17 0%, #1a1f29 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #a0a0b0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .cyber-border {
+            height: 3px;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            width: 80%;
+            margin: 20px auto;
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(209, 0, 209, 0.7);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: rgba(30, 35, 48, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00f3ff 0%, #d100d1 100%);
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover::before {
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            border-color: rgba(0, 243, 255, 0.5);
+        }
+        
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(0, 243, 255, 0.1);
+            position: relative;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            color: #00f3ff;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            color: #a0a0b0;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 1.3rem;
+            color: #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+            position: relative;
+        }
+        
+        /* Animation classes */
+        .flash {
+            animation: flashing 2s infinite;
+        }
+        
+        .pulse {
+            animation: pulsing 3s infinite;
+        }
+        
+        .bounce {
+            animation: bouncing 4s infinite;
+        }
+        
+        .spin {
+            animation: spinning 8s infinite linear;
+        }
+        
+        .alert-flash {
+            animation: alertFlashing 1.5s infinite;
+            color: #ff0066;
+        }
+        
+        @keyframes flashing {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        @keyframes pulsing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes bouncing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes spinning {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes alertFlashing {
+            0%, 100% { 
+                opacity: 1;
+                text-shadow: 0 0 10px #ff0066;
+            }
+            50% { 
+                opacity: 0.5;
+                text-shadow: 0 0 20px #ff0066;
+            }
+        }
+        
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: 
+                linear-gradient(to right, rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+        
+        .scan-line {
+            position: fixed;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(to right, 
+                transparent, 
+                rgba(0, 243, 255, 0.7), 
+                transparent);
+            animation: scan 3s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100vh; }
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    <div class="scan-line"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>DEEP DIVE: SOC L1 ANALYST</h1>
+            <div class="cyber-border"></div>
+            <p>SOC Analysts are the first line of defense against cyber threats, monitoring and analyzing security events to protect organizational assets.</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-project-diagram icon flash"></i>
+                </div>
+                <h3>SECURITY EVENT CORRELATION</h3>
+                <p>Identifying patterns across multiple security events to detect potential threats and attacks.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-file-alt icon pulse"></i>
+                </div>
+                <h3>LOG ANALYSIS</h3>
+                <p>Examining system and network logs to identify anomalies and potential security incidents.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-search icon bounce"></i>
+                </div>
+                <h3>THREAT HUNTING (BASIC)</h3>
+                <p>Proactively searching for indicators of compromise and potential threats in the environment.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-phone-alt icon alert-flash"></i>
+                </div>
+                <h3>ESCALATION & COLLABORATION</h3>
+                <p>Working with other teams to resolve security incidents and escalate when necessary.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-microscope icon pulse"></i>
+                </div>
+                <h3>INITIAL FORENSIC TRIAGE</h3>
+                <p>Performing initial investigation and evidence gathering for potential security incidents.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-exclamation-triangle icon alert-flash"></i>
+                </div>
+                <h3>INCIDENT PRIORITY</h3>
+                <p>Assessing and prioritizing security incidents based on severity and potential impact.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-tasks icon spin"></i>
+                </div>
+                <h3>PLAYBOOK EXECUTION</h3>
+                <p>Following established procedures and playbooks for incident response and mitigation.</p>
+            </div>
+            
+            <div class="card">
+                <div class="icon-container">
+                    <i class="fas fa-graduation-cap icon bounce"></i>
+                </div>
+                <h3>CONTINUOUS LEARNING</h3>
+                <p>Staying updated with the latest threats, vulnerabilities, and security technologies.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            SOC ANALYSTS ARE THE FIRST LINE OF DEFENSE
+        </div>
+    </div>
+
+    <script>
+        // Add random scan lines for effect
+        function addScanLines() {
+            const body = document.querySelector('body');
+            const numberOfLines = 3;
+            
+            for (let i = 0; i < numberOfLines; i++) {
+                const scanLine = document.createElement('div');
+                scanLine.classList.add('scan-line');
+                scanLine.style.left = '0';
+                scanLine.style.animationDelay = Math.random() * 3 + 's';
+                body.appendChild(scanLine);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            addScanLines();
+            
+            // Add interactive effects on card hover
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.icon');
+                    icon.style.transform = 'scale(1.2)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.icon');
+                    icon.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>`;
+
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'soc-infographic.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('HTML file downloaded successfully! You can now upload it to a hosting service.');
+        }
+        
+        // Add random scan lines for effect
+        function addScanLines() {
+            const body = document.querySelector('body');
+            const numberOfLines = 3;
+            
+            for (let i = 0; i < numberOfLines; i++) {
+                const scanLine = document.createElement('div');
+                scanLine.classList.add('scan-line');
+                scanLine.style.left = '0';
+                scanLine.style.animationDelay = Math.random() * 3 + 's';
+                body.appendChild(scanLine);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            addScanLines();
+        });
+    </script>
+</body>
+</html>
